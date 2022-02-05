@@ -1,9 +1,21 @@
+import { useEffect, useState } from "react";
+
 function Home(){
     
-    const todos = [
-        { id: 1, description: "todo sample" },
-        { id: 2, description: "todo sample 2" },
-    ];
+    const [ todos, setTodos ] = useState([]);
+
+    useEffect(() => {
+
+        var todosStored = localStorage.getItem(todosStored);
+
+        if(todosStored)
+            setTodos(JSON.parse(todosStored));
+        else
+            setTodos([
+                { id: 1, description: "todo sample" },
+                { id: 2, description: "todo sample 2" },
+            ]);
+    }, []);
 
     return (
         <main>
