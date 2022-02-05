@@ -13,7 +13,7 @@ function Home(){
 
     useEffect(() => {
 
-        var todosStored = localStorage.getItem(todosStored);
+        var todosStored = localStorage.getItem("todosStored");
 
         if(todosStored)
             setTodos(JSON.parse(todosStored));
@@ -27,15 +27,24 @@ function Home(){
 
     const addTodo = () => {
 
-        setTodos([...todos, ...[{
-            id: Math.floor(Math.random()*1000),
-            description: description
-        }]]);
+        setTodos(            
+            [...todos, ...[{
+                    id: Math.floor(Math.random()*1000),
+                    description: description
+                }]
+            ]
+        );
 
         setDescription("");
-        setShow(false);
-
+        setShow(false);       
+    
     }
+
+    useEffect(() => {
+
+        localStorage.setItem("todosStored", JSON.stringify(todos));
+        
+    }, [todos]);
 
     return (
         <main>
