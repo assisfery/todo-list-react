@@ -6,6 +6,7 @@ function Home(){
     const [ todos, setTodos ] = useState([]);
 
     const [show, setShow] = useState(false);
+    const [ description, setDescription ] = useState("");
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -21,7 +22,20 @@ function Home(){
                 { id: 1, description: "todo sample" },
                 { id: 2, description: "todo sample 2" },
             ]);
+        
     }, []);
+
+    const addTodo = () => {
+
+        setTodos([...todos, ...[{
+            id: Math.floor(Math.random()*1000),
+            description: description
+        }]]);
+
+        setDescription("");
+        setShow(false);
+
+    }
 
     return (
         <main>
@@ -47,7 +61,10 @@ function Home(){
                     </Modal.Header>
 
                     <Modal.Body>
-                        <p>Modal body text goes here.</p>
+                        <form className="text-center">
+                            <textarea className="form-control my-2" rows="3" onChange={ (e) => setDescription(e.target.value) }></textarea>
+                            <button className="btn btn-primary rounded-pill" type="button" onClick={ addTodo }>Confirm</button>
+                        </form>
                     </Modal.Body>
                 </Modal>
 
