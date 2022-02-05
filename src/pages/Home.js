@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
+import { Modal } from 'react-bootstrap';
 
 function Home(){
     
     const [ todos, setTodos ] = useState([]);
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(() => {
 
@@ -20,7 +26,11 @@ function Home(){
     return (
         <main>
             <div className="container py-1">
-                <h3>My Tasks</h3>
+                <div className="d-flex justify-content-between mb-2">
+                    <h3>My Tasks</h3>
+                    <a href="#/" className="btn btn-primary rounded-pill" onClick={handleShow}>Add new todo</a>
+                </div>
+                <div>
                 {
                     todos.map(
                         (t) => 
@@ -29,6 +39,18 @@ function Home(){
                             </div>
                     )
                 }
+                </div>
+
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Add new todo</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        <p>Modal body text goes here.</p>
+                    </Modal.Body>
+                </Modal>
+
             </div>
         </main>
     );
