@@ -1,8 +1,9 @@
 # Todo list with React
-A simple todo list app done with react and bootstrap 5
+![React Pomodoro Screenshot](/screenshot.png)
 
 ### About project
-Done just to practice react concepts.
+A simple todo list app done with react and bootstrap 5,
+just to practice react concepts.
 
 ### Install
 `npm install`
