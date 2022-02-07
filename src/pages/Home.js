@@ -27,6 +27,9 @@ function Home(){
 
     const addTodo = () => {
 
+        if(!description.trim())
+            return;
+
         setTodos(            
             [...todos, ...[{
                     id: Math.floor(Math.random()*1000), // simple random id, dont use it on production pls lol
