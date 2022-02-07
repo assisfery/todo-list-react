@@ -40,6 +40,13 @@ function Home(){
     
     }
 
+    const deleteTodo = (id) => {
+        
+        var copyTodosDifferent = todos.filter( (e) => e.id != id);
+        setTodos(copyTodosDifferent);
+        
+    }
+
     useEffect(() => {
 
         localStorage.setItem("todosStored", JSON.stringify(todos));
@@ -57,8 +64,11 @@ function Home(){
                 {
                     todos.map(
                         (t) => 
-                            <div className="alert alert-secondary" key={t.id}>
+                            <div className="alert alert-secondary d-flex justify-content-between" key={t.id}>
                                 {t.description}
+                                <a href="#/" className="text-muted" onClick={ () => deleteTodo(t.id) }>
+                                    <i className="fas fa-times"></i>
+                                </a>
                             </div>
                     )
                 }
