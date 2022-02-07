@@ -6,10 +6,17 @@ function Nav(){
             <div className="container">
                 <ul className="nav justify-content-center">
                     <li className="nav-item">
-                        <Link to="/" className="nav-link text-dark">Home</Link>
+                        <Link to="/" className="nav-link text-dark">
+                            Home
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/trash" className="nav-link text-dark">Trash</Link>
+                        <Link to="/trash" className="nav-link text-dark">
+                            <i className="fas fa-trash"></i>
+                            <span className="mx-2">
+                                Trash
+                            </span>
+                        </Link>
                     </li>
                 </ul>
             </div>

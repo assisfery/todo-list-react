@@ -40,11 +40,16 @@ function Home(){
     
     }
 
-    const deleteTodo = (id) => {
-        
-        var copyTodosDifferent = todos.filter( (e) => e.id != id);
-        setTodos(copyTodosDifferent);
-        
+    const archiveTodo = (id) => {
+
+        var indexToArchived = todos.findIndex( (e) => e.id == id);
+
+        var copyTodos = todos.slice();
+
+        copyTodos[indexToArchived].archived = true;
+
+        //console.log(copyTodos);
+        setTodos(copyTodos);        
     }
 
     useEffect(() => {
@@ -63,12 +68,17 @@ function Home(){
                 <div>
                 {
                     todos.map(
-                        (t) => 
-                            <div className="alert alert-secondary d-flex justify-content-between" key={t.id}>
-                                {t.description}
-                                <a href="#/" className="text-muted" onClick={ () => deleteTodo(t.id) }>
-                                    <i className="fas fa-times"></i>
-                                </a>
+                        (t) =>
+                            <div key={t.id}>
+                            {
+                                t.archived != true &&
+                                <div className="alert alert-secondary d-flex justify-content-between">
+                                    {t.description}
+                                    <a href="#/" className="text-muted" onClick={ () => archiveTodo(t.id) }>
+                                        <i className="fas fa-times"></i>
+                                    </a>
+                                </div>
+                            }
                             </div>
                     )
                 }
